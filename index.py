@@ -69,13 +69,28 @@ class Page_Register:
         self.app = app
         self.frame = tk.Frame(self.master)
         tk.Label(self.frame, text='Register here').pack()
+        
         self.textbox = tk.Entry(self.frame, bg="white", width=50, borderwidth=2)
-        self.textbox.insert(0, "This is Temporary Text...")
+        self.textbox.insert(0, 'Enter your name here')
         self.textbox.pack(pady=20)
-
         self.textbox.bind("<FocusIn>", self.placeholders)
-    def placeholders(self):
+
+        self.textbox1 = tk.Entry(self.frame, bg="white", width=50, borderwidth=2)
+        self.textbox1.insert(0, 'Enter your password here')
+        self.textbox1.pack(pady=20)
+        self.textbox1.bind("<FocusIn>", self.placeholders1)
+
+        self.textbox2 = tk.Entry(self.frame, bg="white", width=50, borderwidth=2)
+        self.textbox2.insert(0, 'Enter your password again')
+        self.textbox2.pack(pady=20)
+        self.textbox2.bind("<FocusIn>", self.placeholders2)
+
+    def placeholders(self,l):
         self.textbox.delete(0, 'end')
+    def placeholders1(self,l):
+        self.textbox1.delete(0, 'end')
+    def placeholders2(self,l):
+        self.textbox2.delete(0, 'end')
 
     def start_page(self):
         tk.Button(self.app.bottom_frame, text='Go back', command=self.go_back).pack(side='right', padx=5, pady=5)
